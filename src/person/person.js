@@ -1,6 +1,6 @@
 import React from 'react';
 
-//This is a way of envoking a component with out a class
+//This is a way of envoking a component with out a class - functional component
 
 // const person = (props) => {
 //   return <p>I'm a person called {props.name} and I am {props.age}</p>
