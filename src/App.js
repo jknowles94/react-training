@@ -31,11 +31,13 @@ class App extends Component {
   }
 
   //click attr is passing a clickhandler to change the data to the parent component
+
+  //Use .bind to add params to a function handler
   //IE: onClick={this.switchNameHandler.bind(this, "test")}
 
   render() {
     //This is how to inline style - use files, it's easier and better - only positive is its only scoped for the component you are using
-    
+
     const style = {
       backgroundColour: "white",
       font: "inherit",
