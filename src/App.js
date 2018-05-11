@@ -25,7 +25,7 @@ class App extends Component {
   // }
 
   deletePersonHandler = (index) => { 
-    //copy of the state - flawed - objects and arrays are revference types - its changing the original data - can be flawed with bigger apps and data - always update state in an immutable fashion
+    //copy of the state - flawed - objects and arrays are reference types - its changing the original data - can be flawed with bigger apps and data - always update state in an immutable fashion
 
     // const persons = this.state.persons;
 
