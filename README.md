@@ -1,3 +1,14 @@
+## CSS
+Css modules needs to activated in the config via `npm eject` - set CSS modules to true in both webpack.dev and webpack.prod files in the config folder and then import the styling in the module like:
+
+import classes from 'style.css';
+
+from this you can acces styles before they are 'modulized'. eg.'classes.App'
+
+Radium is a plugin for using inline styling psuedo classes and media queries
+
+## Create React App
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
