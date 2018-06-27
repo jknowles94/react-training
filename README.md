@@ -1,3 +1,20 @@
+## Debugging
+To find logical errors like an object property having the wrong name use the dev tools and sources to edit your code to add breakpoints to see where the code is breaking. Walk through your code while youre debugging it using sources and source maps.
+
+To find the current state of your app - use react developer tools - in the chrome dev tools there will be a react tab to look at the state of your app
+
+For catching errors you can use functions like:
+
+```
+throw new Error('Something went wrong');
+```
+Error Boundary is a new react feature - nice tool to know:
+You can create a component with a componentDidCatch function in it (from react) - to get the error - you can then export and import this error message through out the app as a component. This is useful when calling APIs. It's a higher order component which you can wrap around another component. Only use it when necessary - user error. Will only work on production - in development you will get the error screen.
+```
+componentDidCatch = (error, info) => {
+  this.setState({hasError: true, errorMessage: error});
+}
+```
 ## CSS
 Css modules needs to activated in the config via `npm eject` - set CSS modules to true in both webpack.dev and webpack.prod files in the config folder and then import the styling in the module like:
 
