@@ -15,6 +15,8 @@ componentDidCatch = (error, info) => {
   this.setState({hasError: true, errorMessage: error});
 }
 ```
+https://reactjs.org/docs/error-boundaries.html
+
 ## CSS
 Css modules needs to activated in the config via `npm eject` - set CSS modules to true in both webpack.dev and webpack.prod files in the config folder and then import the styling in the module like:
 
