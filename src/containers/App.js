@@ -3,6 +3,8 @@ import './App.css';
 import Persons from '../components/persons/persons';
 import Cockpit from '../components/cockpit/cockpit';
 
+//THIS IS A STATEFUL/CONTAINER COMPONENT - THIS IS WHERE METHODS AND STATE LIVES. TO ACCESS THEM USE THIS. ONLY USE THESE TO MANAGE STATE/METHODS AND LIFECYCLE HOOKS
+
 class App extends Component {
   //Props is to share data to a another component - state is to update the component data within the component
 
@@ -87,7 +89,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        <Cockpit toggle={this.togglePersons}/>
+        <Cockpit 
+        toggle={this.togglePersons}
+        title={this.props.title}/>
         {persons}
       </div>
     );

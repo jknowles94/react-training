@@ -1,7 +1,7 @@
 import React from 'react';
 import Person from './person/person';
 
-//ONLY USE FUNCTIONAL COMPONENTS WHEN YOU DONT NEED TO MANAGE STATE
+//ONLY USE FUNCTIONAL COMPONENTS WHEN YOU DONT NEED TO MANAGE STATE AND LIFECYCLE HOOKS - THESE SHOULD BE PASSED DOWN FROM THE CONTAINER COMPONENT(STATEFUL) VIA PROPS
 
 //This splits out the app.js (container component) to make for more readable code and good practice
 

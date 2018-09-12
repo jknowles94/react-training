@@ -4,5 +4,6 @@ import './index.css';
 import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+//Example of using props in container component
+ReactDOM.render(<App title="Relevant people"/>, document.getElementById('root'));
 registerServiceWorker();
