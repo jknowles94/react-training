@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import Person from '../components/person/person';
 import './App.css';
+import Persons from '../components/persons/persons';
+import Cockpit from '../components/cockpit/cockpit';
 
 class App extends Component {
   //Props is to share data to a another component - state is to update the component data within the component
@@ -71,62 +72,22 @@ class App extends Component {
   //whenever react needs to re-render the DOM it executes the whole render()
 
   render() {
-    //This is how to inline style - use files, it's easier and better - only positive is its only scoped for the component you are using
-
-    const style = {
-      backgroundColour: "white",
-      font: "inherit",
-      border: "1px solid blue",
-      padding: "8px",
-      cursor: "pointer"
-    };
-
-    //Sometimes when nesting a lot of conditional statements using ternary operaters are bad practice and messy - so outside of the return you can execute if statements that fire every time render is executed - keeps the return clean
 
     let persons = null;
 
     if(this.state.showPersons) {
-      //this is for adding a list into JSX. just using a map function on an array in the state
-      //react needs a key attr when creating lists to keep react happy in the virtual DOM
       persons = (
-        <div>
-        {
-          this.state.persons.map((person, index) => {
-            return (
-              <Person key={person.id} name={person.name} age={person.age} click={this.deletePersonHandler.bind(this, index)} changed={this.nameChangedHandler.bind(this, person.id)} />
-            )
-          })
-        }
-        </div>
+        //Splitting the components makes for less more readable code instead of mapping it all in one container component
+        <Persons 
+        clicked={this.deletePersonHandler}
+        changed={this.nameChangedHandler} 
+        persons={this.state.persons} />
       )
     }
 
-
-    //For conditionally loading content on a page use ternary Operators - block operaters like if() statements will not work - in JSX wrap it in {} to use javascript in the html
-
-    // ie:
-
-    // {
-    //   this.state.showPersons ? 
-    //     <div>
-    //       <Person 
-    //       name={this.state.persons[0].name} 
-    //       age={this.state.persons[0].age}
-    //       click={this.switchNameHandler.bind(this, "Jake is not a twat")}
-    //       changed={this.nameChangedHandler}
-    //       />
-    //       <Person name={this.state.persons[1].name} age={this.state.persons[1].age}/>
-    //     </div> 
-    //   : null
-    // }
-
     return (
       <div className="App">
-        <h1>This is my app</h1>
-        <button 
-        style={style}
-        onClick={this.togglePersons}
-        >Toggle</button>
+        <Cockpit toggle={this.togglePersons}/>
         {persons}
       </div>
     );
