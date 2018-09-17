@@ -18,6 +18,20 @@ import Cockpit from '../components/cockpit/cockpit';
 //THIS IS A STATEFUL/CONTAINER COMPONENT - THIS IS WHERE METHODS AND STATE LIVES. TO ACCESS THEM USE THIS. ONLY USE THESE TO MANAGE STATE/METHODS AND LIFECYCLE HOOKS
 
 class App extends Component {
+  constructor(props) {
+    // this overrides react so need to call props in super()
+    //A lot fo examples online use older versions where state is initialised in constructor. recommended to use outside. use this.state if you make in constructor
+    super(props);
+    console.log("constructor ", props);
+  }
+
+  componentWillMount() {
+    console.log("componentWillMount ");
+  }
+
+  componentDidMount() {
+    console.log("componentDidMount");
+  }
   //Props is to share data to a another component - state is to update the component data within the component
 
   //Containers have all the handlers and methods in it which is then passed via props to its children components
@@ -86,7 +100,7 @@ class App extends Component {
   //whenever react needs to re-render the DOM it executes the whole render()
 
   render() {
-
+    console.log("render");
     let persons = null;
 
     if(this.state.showPersons) {

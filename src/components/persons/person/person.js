@@ -3,7 +3,22 @@ import './person.css';
 //This is a way of envoking a component with out a class - functional component - want to use this as much as possible to just render dynamic content
 
 class Person extends Component {
+	constructor(props) {
+    // this overrides react so need to call props in super()
+    //A lot fo examples online use older versions where state is initialised in constructor. recommended to use outside. use this.state if you make in constructor
+    super(props);
+    console.log("person constructor ", props);
+  }
+
+  componentWillMount() {
+    console.log("person componentWillMount ");
+  }
+
+  componentDidMount() {
+    console.log("person componentDidMount");
+  }
 	render() {
+		console.log("person render");
 		return (
 		  <div className="person">
 		    <p onClick={this.props.click}>Im a person called {this.props.name} and I am {this.props.age}</p>
