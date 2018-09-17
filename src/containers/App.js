@@ -3,6 +3,18 @@ import './App.css';
 import Persons from '../components/persons/persons';
 import Cockpit from '../components/cockpit/cockpit';
 
+//Component lifecycle
+//Only available in stateful components
+
+//Component creation - constructor(), componentWillMount(), componentDidMount(), render();
+//Order of execution:
+//constructor() - default ES6, passes on props to contstructor(props); Must call super(props) inside constructor to get parent props;
+//Can initialise the state in the constructor - side effects are reaching to a web server in constructor()
+//componentWillMount() - exists for historic reasons - dont really use it anymore
+//render() - gives react an idea of what it should look like when it goes to the DOM - prepares and structures JSX code
+//After render react then renders all the children components found in the render() and performs the same lifecycle
+//componentDidMount() - tells you that this componenet was successfully mounted - this is where you get your data. Do not update the state here though will trigger a re render;
+
 //THIS IS A STATEFUL/CONTAINER COMPONENT - THIS IS WHERE METHODS AND STATE LIVES. TO ACCESS THEM USE THIS. ONLY USE THESE TO MANAGE STATE/METHODS AND LIFECYCLE HOOKS
 
 class App extends Component {
