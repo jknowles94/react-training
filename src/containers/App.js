@@ -3,10 +3,33 @@ import './App.css';
 import Persons from '../components/persons/persons';
 import Cockpit from '../components/cockpit/cockpit';
 
+// HIGHER ORDER COMPONENTS/FUCNTIONS - COULD BE USED TO WRAP COMPONENTS TO DO SOMETHING SMALL AND WRAPS THE COMPONENT - LIKE DIRECTIVE IN ANGULAR - EXAMPLE IS ADDING A CLASSNAME TO A WRAPPING DIV - NEVER TRY MANIPULATING COMPONENTS IN HOC 
+// Aux is a classic example of HOC to stop adding wrapping divs and just return the component
+
+// React 16.2 Feature: Fragments
+// Section 7, Lecture 95
+// If your project uses React 16.2, you can now use a built-in "Aux" component - a so called fragment.
+
+// It's actually not called Aux  but you simply use <>  - an empty JSX tag.
+
+// So the following code
+
+// <Aux>
+//     <h1>First Element</h1>
+//     <h1>Second Element</h1>
+// </Aux>
+// becomes
+
+// <>
+//     <h1>First Element</h1>
+//     <h1>Second Element</h1>
+// </>
+
+
 //Component lifecycle
 //Only available in stateful components
 
-//Component creation - constructor(), componentWillMount(), componentDidMount(), render();
+//COMPONENT LIFECYCLE FOR CREATION - constructor(), componentWillMount(), componentDidMount(), render();
 //Order of execution:
 //constructor() - default ES6, passes on props to contstructor(props); Must call super(props) inside constructor to get parent props;
 //Can initialise the state in the constructor - side effects are reaching to a web server in constructor()
@@ -14,6 +37,22 @@ import Cockpit from '../components/cockpit/cockpit';
 //render() - gives react an idea of what it should look like when it goes to the DOM - prepares and structures JSX code
 //After render react then renders all the children components found in the render() and performs the same lifecycle
 //componentDidMount() - tells you that this componenet was successfully mounted - this is where you get your data. Do not update the state here though will trigger a re render;
+// componentWillUnmount() is applied to a component that is about to be removed from the DOM
+
+// COMPONENT LIFECYCLE FOR UPDATING - TRIGGERED BY PARENT
+// componentWillRecieveProps(nextProps) - gets the upcoming props as argument - sync local state to the props if parent changes updates the state in this component.
+// shoudlComponentUpdate(nextProps, nextState) - could cancel updating process - return true - updates, returns false - doesnt update. could save performance if you stop updating a component if it is not needed.
+//componentWillUpdate(nextProps, nextState) - if shouldComponentUpdate is true will give ability to sync props and state - use this rather than componentWillRecieveProps
+// render()
+// componentDidUpdate() - if the component updates
+
+
+// COMPONENT LIFECYCLE FOR UPDATING INTERNALLY (STATE CHANGE)
+// shouldComponentUpdate(nextprops, nextState)
+// componentWillUpdate(nextProps, nextState)
+// render()
+// componentDidUpdate()
+
 
 //THIS IS A STATEFUL/CONTAINER COMPONENT - THIS IS WHERE METHODS AND STATE LIVES. TO ACCESS THEM USE THIS. ONLY USE THESE TO MANAGE STATE/METHODS AND LIFECYCLE HOOKS
 
@@ -32,6 +71,21 @@ class App extends Component {
   componentDidMount() {
     console.log("componentDidMount");
   }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("[Update app.js] inside shouldComponentUpdate", nextProps, nextState);
+    return true;
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    console.log("[Update app.js] inside componentWillUpdate", nextProps, nextState);
+  }
+
+  componentDidUpdate() {
+    // on update this is where you can call data
+    console.log("[Update app.js] inside componentDidUpdate");
+  }
+
   //Props is to share data to a another component - state is to update the component data within the component
 
   //Containers have all the handlers and methods in it which is then passed via props to its children components
