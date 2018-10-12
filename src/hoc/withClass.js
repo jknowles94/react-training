@@ -28,7 +28,7 @@ export default withClass;
 //   }
 // }
 
-export default withClass;
+// export default withClass;
 
 // In the app component that will then be exported like the following
 
