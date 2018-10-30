@@ -18,6 +18,8 @@ class Person extends Component {
     //A lot fo examples online use older versions where state is initialised in constructor. recommended to use outside. use this.state if you make in constructor
     super(props);
     console.log("person constructor ", props);
+    //Ref is good for focusing inputs and some things like that - only available in stateful components - can define properties of this class
+    this.inputElement = React.createRef();
   }
 
   componentWillMount() {
@@ -26,14 +28,17 @@ class Person extends Component {
 
   componentDidMount() {
     console.log("person componentDidMount");
+    // this is using the inputElement prop from the ref on input - good for focusing or media playback
+    this.inputElement.current.focus();
   }
 	render() {
 		console.log("person render");
+    
 		return (
 		  <div className="person">
 		    <p onClick={this.props.click}>Im a person called {this.props.name} and I am {this.props.age}</p>
 		    <p>{this.props.children}</p>
-		    <input type="text" onChange={this.props.changed} value={this.props.name} />
+		    <input ref={this.inputElement} type="text" onChange={this.props.changed} value={this.props.name} />
 		  </div>
 		)
 	}
