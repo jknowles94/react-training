@@ -146,6 +146,14 @@ class App extends Component {
     this.setState({showPersons: !doesShow});
   }
 
+  // when mutating the state depending on the previous state. should use the functional setState
+  // the function takes an arguement of the previous state which you can refer to, to update the state
+  // this.setState((prevState, props) => {
+  //   return {
+  //     toggle: prevState.toggle + 1
+  //   }
+  // });
+
   //click attr is passing a clickhandler to change the data to the parent component
 
   //Use .bind to add params to a function handler

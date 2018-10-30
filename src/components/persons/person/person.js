@@ -1,5 +1,15 @@
 import React, {Component} from 'react';
 import './person.css';
+// propTypes is an external package which checks if the props are using the correct rules - GOOD FOR TEAMS
+// these are the props used in the person component
+// Doesnt work with functional components
+// Person.propTypes = {
+//   click: propTypes.func,
+//   age: propTypes.number,
+//   name: propTypes.string,
+//   changed: propTypes.func
+// }
+
 //This is a way of envoking a component with out a class - functional component - want to use this as much as possible to just render dynamic content
 
 class Person extends Component {
