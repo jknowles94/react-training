@@ -6,6 +6,25 @@ import Cockpit from '../components/cockpit/cockpit';
 // HIGHER ORDER COMPONENTS/FUCNTIONS - COULD BE USED TO WRAP COMPONENTS TO DO SOMETHING SMALL AND WRAPS THE COMPONENT - LIKE DIRECTIVE IN ANGULAR - EXAMPLE IS ADDING A CLASSNAME TO A WRAPPING DIV - NEVER TRY MANIPULATING COMPONENTS IN HOC 
 // Aux is a classic example of HOC to stop adding wrapping divs and just return the component
 
+// For global settings (authentication) use the context API - passing data without passing around props
+// Works below the imports create a const in the parent component
+// Good for Authentication
+// export const AuthContext = React.createContext(false); 
+// can be array object string or boolean
+// in the render youll need to add a element to wrap around the components which can use it
+// can be assigned in the function or in the state by giving the component a value
+// provider is to provide data to components
+// IE <AuthContext.provider value={this.state.authenticated}></AuthContext.provider>
+// Consumer is to use in a component which needs the information from the context
+// Have to import into component then use the consumer
+// Needs a method inside the component like below
+// IE <AuthContext.Consumer>{auth => auth ? true : false}</AuthContext.Consumer>
+
+// In react 16.6 you can use static contextType instead of the consumer - this.context is created by react.
+// The export of your context will need to be in its own file. then imported into the parent as default export - no circular dependency. Easier to work with - less code. accessible in stateful components
+// static contextType = AuthContext;
+// this.context.auth ? true : false;
+
 // React 16.2 Feature: Fragments
 // Section 7, Lecture 95
 // If your project uses React 16.2, you can now use a built-in "Aux" component - a so called fragment.
@@ -33,6 +52,7 @@ import Cockpit from '../components/cockpit/cockpit';
 //Order of execution:
 //constructor() - default ES6, passes on props to contstructor(props); Must call super(props) inside constructor to get parent props;
 //Can initialise the state in the constructor - side effects are reaching to a web server in constructor()
+// REACT 16.3 DISCOURAGES USING componentWillMount()
 //componentWillMount() - exists for historic reasons - dont really use it anymore
 //render() - gives react an idea of what it should look like when it goes to the DOM - prepares and structures JSX code
 //After render react then renders all the children components found in the render() and performs the same lifecycle
@@ -40,15 +60,22 @@ import Cockpit from '../components/cockpit/cockpit';
 // componentWillUnmount() is applied to a component that is about to be removed from the DOM
 
 // COMPONENT LIFECYCLE FOR UPDATING - TRIGGERED BY PARENT
+
+// REACT 16.3 DISCOURAGES USING componentWillRecieveProps()
 // componentWillRecieveProps(nextProps) - gets the upcoming props as argument - sync local state to the props if parent changes updates the state in this component.
+
 // shoudlComponentUpdate(nextProps, nextState) - could cancel updating process - return true - updates, returns false - doesnt update. could save performance if you stop updating a component if it is not needed.
-//componentWillUpdate(nextProps, nextState) - if shouldComponentUpdate is true will give ability to sync props and state - use this rather than componentWillRecieveProps
+
+// REACT 16.3 DISCOURAGES USING componentWillUpdate()
+// componentWillUpdate(nextProps, nextState) - if shouldComponentUpdate is true will give ability to sync props and state - use this rather than componentWillRecieveProps
+
 // render()
 // componentDidUpdate() - if the component updates
 
 
 // COMPONENT LIFECYCLE FOR UPDATING INTERNALLY (STATE CHANGE)
 // shouldComponentUpdate(nextprops, nextState)
+// REACT 16.3 DISCOURAGES USING componentWillUpdate()
 // componentWillUpdate(nextProps, nextState)
 // render()
 // componentDidUpdate()
